@@ -27,8 +27,18 @@ for (day = 1; day < MAX_WORKING_Days; day++) {
     empHrs = getWorkingHrs(empInput);
     totalEmpHrs += empHrs;
 }
-
-empWage = EMP_RATE_PER_HR * totalEmpHrs;
-console.log("UC2 empWage" + empWage);
-console.log("UC3 functions:Getting emphrs" + empWage)
-console.log("UC4 forloop:TotalWageFor" + MAX_WORKING_Days + "days" + empWage);
+const MAX_WORKING_HOURS = 160;
+let totalWorkingDays = 0;
+let totalWorkingHours = 0;
+let totalWage = 0;
+while (totalWorkingDays <= MAX_WORKING_Days && totalWorkingHours <= MAX_WORKING_HOURS) {
+    let empCheck = Math.floor(Math.random() * 10) % 3;
+    totalWorkingHours = getWorkingHrs(empCheck);
+    totalWorkingDays++;
+    totalWage += totalWorkingHours * EMP_RATE_PER_HR;
+}
+console.log("UC5: Total wage is " + totalWage);
+//empWage = EMP_RATE_PER_HR * totalEmpHrs;
+//console.log("UC2 empWage" + empWage);
+//console.log("UC3 functions:Getting emphrs" + empWage)
+//console.log("UC4 forloop:TotalWageFor" + MAX_WORKING_Days + "days" + empWage);

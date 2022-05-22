@@ -28,8 +28,8 @@ while (totalWorkingDays <= MAX_WORKING_Days && totalWorkingHours <= MAX_WORKING_
         }
     }
     empHrs = getWorkingHrs(empInput);
-    totalEmpHrs += empHrs;
-    empWage = EMP_RATE_PER_HR * totalEmpHrs;
+    // totalEmpHrs += empHrs;
+    empWage = EMP_RATE_PER_HR * empHrs;
     empWages.push(empWage);
     totalWorkingDays++;
     totalWage += empWage;
@@ -43,3 +43,13 @@ console.log("UC6 Array:" + empWages);
 //console.log("UC2 empWage" + empWage);
 //console.log("UC3 functions:Getting emphrs" + empWage)
 console.log("UC5 Whileloop:TotalWageFor" + MAX_WORKING_Days + "days" + totalWage);
+//UC7 ArrayHelper function///
+console.log("/nUC7 Array Helper functions");
+let totalempWage = 0;
+
+function GetTotalWage(dailyWage) {
+    totalempWage += dailyWage;
+}
+//Array for each heler function//
+empWages.forEach(GetTotalWage);
+console.log("UC-7A-Array for each helper function " + totalempWage);

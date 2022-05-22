@@ -34,8 +34,6 @@ while (totalWorkingDays <= MAX_WORKING_Days && totalWorkingHours <= MAX_WORKING_
     totalWorkingDays++;
     totalWage += empWage;
     totalWorkingHours += totalEmpHrs;
-
-
 }
 console.log("UC6 Array:" + empWages);
 //console.log("UC5: Total wage is " + totalWage);
@@ -50,6 +48,20 @@ let totalempWage = 0;
 function GetTotalWage(dailyWage) {
     totalempWage += dailyWage;
 }
+
+function GetTotalWageByUsingReduce(dailyWage, total) {
+    return total + dailyWage;
+}
+let dayCount = 0;
+
+function MyMapFunc(dailyWage) {
+    dayCount++;
+    return "Day" + dayCount + "=" + dailyWage;
+}
 //Array for each heler function//
 empWages.forEach(GetTotalWage);
 console.log("UC-7A-Array for each helper function " + totalempWage);
+//Array for reduce helper function//
+console.log("UC-7A-Array reduce helper function " + empWages.reduce(GetTotalWageByUsingReduce));
+//UC-7B-Array map helper function //
+console.log("UC-7B-Array map helper function:" + empWages.map(MyMapFunc));

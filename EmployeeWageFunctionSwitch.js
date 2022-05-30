@@ -133,3 +133,32 @@ console.log("fulltime days:" + fulltimeArray);
 console.log("parttime days:" + partTimeArray);
 console.log("no working days:" + noWorkingDaysArray);
 console.log("Array object" + empDayWageHrs);
+let findTotalWage = (totalwages, dailyWage) => {
+    return totalwages + dailyWage.wage;
+}
+let totalWages = empDayWageHrs.filter(dailyHrsAndWage => dailyHrsAndWage.EmployeeWage > 0).reduce(findTotalWage, 0);
+console.log("UC 11A-finding totalwage using object and arrow function:" + totalWages);
+let findTotalHours = (totalwages, dailyWage) => {
+    return totalwages + dailyWage.workingHrs;
+}
+let totalempHrs = empDayWageHrs.filter(dailyHrsAndWage => dailyHrsAndWage.workingHrs > 0).reduce(findTotalHours, 0);
+console.log("UC 11A-finding totalempHrs using object and arrow function:" + totalempHrs);
+let daysResult = "";
+let findFullWorkingDays = (dailyWage) => {
+    if (dailyWage.workingHrs == 8);
+    daysResult += dailyWage.Workingday;
+}
+empDayWageHrs.forEach(findFullWorkingDays);
+console.log("UC 11B-finding fulltimeworking days  using object and arrow function:" + daysResult);
+empDayWageHrs.filter(dailyHrsAndWage => dailyHrsAndWage.workingHrs == 8).forEach(
+    dailyHrsAndWage => process.stdout.write(dailyHrsAndWage.toString())
+);
+console.log("UC-11C parttime days using object")
+let partTimeWorkDays = empDayWageHrs.filter(dailyHrsAndWage => dailyHrsAndWage.workingHrs == 4).map(
+    dailyHrsAndWage => dailyHrsAndWage.toString());
+console.log("UC-11C parttime working days using arrow func and object:" + partTimeWorkDays);
+
+console.log("UC-11D parttime days using object")
+let noWorkDays = empDayWageHrs.filter(dailyHrsAndWage => dailyHrsAndWage.workingHrs == 0).map(
+    dailyHrsAndWage => dailyHrsAndWage);
+console.log("UC-11D parttime working days using arrow func and object:" + noWorkDays);

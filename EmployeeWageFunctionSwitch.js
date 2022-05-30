@@ -14,6 +14,7 @@ let empHrsMap = new Map();
 let fulltimeArray = new Array();
 let partTimeArray = new Array();
 let noWorkingDaysArray = new Array();
+let empDayWageHrs = new Array();
 while (totalWorkingDays <= MAX_WORKING_Days && totalWorkingHours <= MAX_WORKING_HOURS) {
     let empInput = Math.floor(Math.random() * 10) % 3;
 
@@ -38,6 +39,14 @@ while (totalWorkingDays <= MAX_WORKING_Days && totalWorkingHours <= MAX_WORKING_
     empWages.push(empWage);
     empDailyWageMap.set(totalWorkingDays, empWage);
     empHrsMap.set(totalWorkingDays, empHrs);
+    empDayWageHrs.push({
+        workingday: totalWorkingDays,
+        workingHrs: empHrs,
+        EmployeeWage: empWage,
+        toString() {
+            return "\nDay:" + this.Workingday + "Hrs:" + this.workingHrs + " Wage:" + this.EmployeeWage;
+        }
+    })
     totalWorkingDays++;
     totalWage += empWage;
     totalWorkingHours += totalEmpHrs;
@@ -123,3 +132,4 @@ empHrsMap.forEach((values, key) => {
 console.log("fulltime days:" + fulltimeArray);
 console.log("parttime days:" + partTimeArray);
 console.log("no working days:" + noWorkingDaysArray);
+console.log("Array object" + empDayWageHrs);

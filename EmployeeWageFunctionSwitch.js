@@ -10,6 +10,7 @@ let totalWorkingHours = 0;
 let totalWage = 0;
 let empWages = new Array();
 let empDailyWageMap = new Map();
+let empHrsMap = new Map();
 while (totalWorkingDays <= MAX_WORKING_Days && totalWorkingHours <= MAX_WORKING_HOURS) {
     let empInput = Math.floor(Math.random() * 10) % 3;
 
@@ -33,6 +34,7 @@ while (totalWorkingDays <= MAX_WORKING_Days && totalWorkingHours <= MAX_WORKING_
     empWage = EMP_RATE_PER_HR * empHrs;
     empWages.push(empWage);
     empDailyWageMap.set(totalWorkingDays, empWage);
+    empHrsMap.set(totalWorkingDays, empHrs);
     totalWorkingDays++;
     totalWage += empWage;
     totalWorkingHours += totalEmpHrs;
@@ -96,5 +98,8 @@ console.log("UC-8 EmployeeWage Map:" + empDailyWageMap);
 for (let [key, value] of empDailyWageMap) {
     console.log(key + ":" + value);
 }
-let totalWageUsingMap = (Array.form(empDailyWageMap.values()).reduce(GetTotalWage, 0));
-console.log("totalwage using employee wage map" + totalWageUsingMap);
+let totalWageUsingMap = (Array.from(empDailyWageMap.values())).reduce(GetTotalWage, 0);
+console.log("totalWage using employee wage map:" + totalWageUsingMap);
+for (let [key, value] of empHrsMap) {
+    console.log(key + ":" + value);
+}

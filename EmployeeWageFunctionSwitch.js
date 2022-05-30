@@ -11,6 +11,9 @@ let totalWage = 0;
 let empWages = new Array();
 let empDailyWageMap = new Map();
 let empHrsMap = new Map();
+let fulltimeArray = new Array();
+let partTimeArray = new Array();
+let noWorkingDaysArray = new Array();
 while (totalWorkingDays <= MAX_WORKING_Days && totalWorkingHours <= MAX_WORKING_HOURS) {
     let empInput = Math.floor(Math.random() * 10) % 3;
 
@@ -107,3 +110,16 @@ const findTotalHrs = (total, dailyWage) => {
     return total + dailyWage;
 }
 console.log("UC-9A-Find totalHrs using seperate arrow function" + Array.from(empHrsMap.values()).reduce(findTotalHrs, 0))
+let totalWageUsingArrow = Array.from(empDailyWageMap.values()).filter(dailyWage => dailyWage > 0).reduce(GetTotalWage, 0);
+console.log("UC-9A-Find totalWage using seperate inline arrow function" + totalWageUsingArrow);
+empHrsMap.forEach((values, key) => {
+    if (values == 8)
+        fulltimeArray.push(key);
+    else if (values == 4)
+        partTimeArray.push(key)
+    else
+        noWorkingDaysArray.push(key)
+});
+console.log("fulltime days:" + fulltimeArray);
+console.log("parttime days:" + partTimeArray);
+console.log("no working days:" + noWorkingDaysArray);

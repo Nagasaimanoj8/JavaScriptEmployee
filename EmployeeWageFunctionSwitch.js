@@ -96,3 +96,5 @@ console.log("UC-8 EmployeeWage Map:" + empDailyWageMap);
 for (let [key, value] of empDailyWageMap) {
     console.log(key + ":" + value);
 }
+let totalWageUsingMap = (Array.form(empDailyWageMap.values()).reduce(GetTotalWage, 0));
+console.log("totalwage using employee wage map" + totalWageUsingMap);

@@ -103,3 +103,7 @@ console.log("totalWage using employee wage map:" + totalWageUsingMap);
 for (let [key, value] of empHrsMap) {
     console.log(key + ":" + value);
 }
+const findTotalHrs = (total, dailyWage) => {
+    return total + dailyWage;
+}
+console.log("UC-9A-Find totalHrs using seperate arrow function" + Array.from(empHrsMap.values()).reduce(findTotalHrs, 0))

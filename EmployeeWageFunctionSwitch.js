@@ -9,6 +9,7 @@ let totalWorkingDays = 1;
 let totalWorkingHours = 0;
 let totalWage = 0;
 let empWages = new Array();
+let empDailyWageMap = new Map();
 while (totalWorkingDays <= MAX_WORKING_Days && totalWorkingHours <= MAX_WORKING_HOURS) {
     let empInput = Math.floor(Math.random() * 10) % 3;
 
@@ -31,6 +32,7 @@ while (totalWorkingDays <= MAX_WORKING_Days && totalWorkingHours <= MAX_WORKING_
     // totalEmpHrs += empHrs;
     empWage = EMP_RATE_PER_HR * empHrs;
     empWages.push(empWage);
+    empDailyWageMap.set(totalWorkingDays, empWage);
     totalWorkingDays++;
     totalWage += empWage;
     totalWorkingHours += totalEmpHrs;
@@ -90,3 +92,7 @@ console.log("UC-7D-First occurence of fulltime:" + fullTimeDays.find(GetFullTime
 console.log(" UC-7E-IS IsEvery element is fulltime or not? \n " + fullTimeDays.every(GetFullTimeDays));
 console.log(" UC-7F-Atleast Any element is parttime or not? \n " + empWagehelperMap.some(GetPartTimeDays));
 console.log("UC-7G-Number of days employee worked: " + empWages.reduce(NumberOfdaysWorked, 0));
+console.log("UC-8 EmployeeWage Map:" + empDailyWageMap);
+for (let [key, value] of empDailyWageMap) {
+    console.log(key + ":" + value);
+}
